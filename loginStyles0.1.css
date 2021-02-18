@@ -12,7 +12,7 @@ html {
 
 body {
     padding: 2rem;
-    height: 100vh;
+    height: fit-content;
     justify-content: center;
     display: grid;
     font-family: Garamond;
