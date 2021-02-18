@@ -1,0 +1,137 @@
+/**************
+ Login styles
+**************/
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Lato&family=Montserrat&family=Open+Sans:wght@700&family=Poppins&family=Roboto&family=Varela+Round&display=swap');
+html {
+	background: linear-gradient(to 
+	right, 
+	rgba(200,153,42,1) 30%,
+	rgba(200,153,51,1) 30%,
+	rgba(241,164,60,1) 70%,
+	rgba(241,164,75,1) 70%);
+	height: 100%;
+}
+
+body {
+	min-height: 100%;
+	padding: 2rem;
+	height: 100%;
+	justify-content: center;
+    display: grid;
+}
+
+.form-title {
+	font-family: 'Varela Round', sans-serif;
+	text-align: left;
+	font-size: 10vw;
+	margin-top: 0.5em;
+	margin-right: 0.5em;
+	color: #4D376D;
+  text-shadow: -1px -1px 10px #FFD23F, 
+		-1px -2px 3px #210124,
+		3px 3px 5px #276b88,
+   5px 10px 50px #FFFCF9;
+}
+.form-subscript {
+	text-align: right;
+	margin-top: 3em;
+	margin-right: 0.5em;
+    text-shadow: #111 0 0 1px, rgba(255,255,255,0.1) 0 1px 3px;
+}
+.form {
+    display: block;
+    position: relative;
+    right: 14%;
+	z-index: 1;
+    background-color: #FFFCF9;
+    width: 25em;
+    height: auto;
+    max-width: 0 auto 10em;
+    margin-bottom: 28em;
+	padding: 3em;
+    text-align: center;
+    box-shadow: 8px 10px 66px 0px rgba(0, 0, 0, 0.4), -1px 1px 0px 0px white, -1px 1px 0px 0px white;
+}
+.form input {
+	font-family: 'Roboto', sans-serif;
+	font-size: 1em;
+	outline: 0.15em;
+	background: #FFFCF9;
+	width: 100%;
+	padding: 0.6em;
+	margin: 0.1em;
+	box-sizing: border-box;
+}
+.form button {
+  position: relative;
+  text-decoration: none;
+  margin: 0.15em;
+  display: inline-block;
+  padding: 0.15em 0.45em;
+  transition: all 0.2s ease 0s;
+  background: #1d6081;
+  outline: none;
+  cursor: pointer;
+  color: #46aecb;
+  font-size: 1.5em;
+  width: 100%;
+  border-bottom: 2px solid #0f4361;
+  box-shadow: 0px 4px 4px #276b88;
+}
+.form button:hover, .form button:active {
+	background: #1B9AAA;
+	color: #1d6081;
+}
+ul {
+    margin-left: 3em;
+}
+.form .message {
+    font-size: 1.2em;
+}
+.form .message a {
+	width: 25em;
+	font-size: 1em;
+	color: #1B9AAA;
+}
+.login-page {
+	width: 25em;
+	padding: 1em 0 0;
+	margin: auto;
+}
+.form .register {
+	display: none;
+}
+/************
+password 
+*************/
+/*valid if green*/
+h5 {
+	font-family: 'Lato', sans-serif;
+	display: block;
+	float: center;
+}
+.valid {
+  color: #43aa8b;
+	margin-left: 2.2em;
+}
+.valid:before {
+  position: relative;
+  content: '\2605';
+}
+/* invalid if red */
+.invalid {
+  color: #e63946;
+	margin-left: 2.2em;
+}
+.invalid:before {
+  position: relative;
+  content: '\2612';/*check*/
+}
+/*message for password*/
+#message {
+  display:none;
+  background: #FFFCF9;
+  color: #000;
+	margin-right: 2em;
+	text-align: left;
+}
