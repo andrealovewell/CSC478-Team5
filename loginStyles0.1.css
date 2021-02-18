@@ -4,8 +4,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Lato&family=Montserrat&family=Open+Sans:wght@700&family=Poppins&family=Roboto&family=Varela+Round&display=swap');
 html {
     background: radial-gradient(
-        rgba(249,205,113,.65) 60%,
-        rgba(210,151,85,.65));
+        rgba(249,205,113,.75) 70%,
+        rgba(210,151,85,.75));
     height: 100vh;
     overflow: hidden;
 }
