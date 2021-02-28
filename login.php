@@ -17,7 +17,7 @@
         <div class ="login-page">
             <div class ="form">
                 <!--register new user-->
-                <form class="register" action="index.php" method="post">
+                <form class="register" action="login.php" method="post">
                     <input type="text" id="firstName" name="firstName" placeholder = "First Name"/>
                     <input type="text" id="lastName" name="lastName" placeholder = "Last Name"/>
                     <input type="email" id="email" name="email" placeholder = "email@example.com"/>
