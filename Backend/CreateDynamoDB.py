@@ -58,4 +58,4 @@ def lambda_handler(event, context):
 
     print(response)
 
-    return returnResponse(200, 'Login was successful.', response)
+    return returnResponse(200, 'Creation was successful.', response)
