@@ -10,7 +10,7 @@ from time import gmtime, strftime
 # create a DynamoDB object using the AWS SDK
 dynamodb = boto3.resource('dynamodb')
 # use the DynamoDB object to select our table
-table = dynamodb.Table('JAMdb')
+table = dynamodb.Table('JAMDB')
 today = date.today()
 datetime = strftime("%Y-%m-%d %H:%M:%S", gmtime())
 
@@ -46,13 +46,16 @@ def lambda_handler(event, context):
     response = table.put_item(
         Item={
             'User_Id': user,
-            'Company#Title#Progress#Date': company + title + progress + date,
-            'App_ID': appID,
-            'Location': location,
+            'App_Id': appID,
+            'Company': company,
+            'Title': title,
+            'Progress': progress,
+            'Date': date,
+            'JobLocation': location,
             'Web Link': weblink,
-            'Job Descriptions': description,
-            'Job Requirements': requirement,
-            'References': references,
+            'JobDescriptions': description,
+            'JobRequirements': requirement,
+            'PersonalReferences': references,
             'Notes': notes
         })
 
