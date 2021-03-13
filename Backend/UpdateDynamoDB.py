@@ -26,14 +26,14 @@ def lambda_handler(event, context):
     requirement = event['requirement']
     references = event['references']
     notes = event['notes']
-
+    #call that updates the items in the database, searches for item by datasbase keys
     response = table.update_item(
         Key={
             'User_Id': user,
             'App_Id': appID,
         },
 
-        UpdateExpression='SET Company=:C, Title=:T, Progress=:P, JobLocation=:L, Weblink=:W, JobDescription= :Jdesc, JobRequirements= :Jreq, PersonalReferences=:R, Notes =:N',
+        UpdateExpression='SET Company=:C, Title=:T, Progress=:P, JobLocation=:L, WebLink=:W, JobDescription= :Jdesc, JobRequirements= :Jreq, PersonalReferences=:R, Notes =:N',
 
         ExpressionAttributeValues={
             ':C': company,
@@ -46,5 +46,11 @@ def lambda_handler(event, context):
             ':R': references,
             ':N': notes
         },
+        #only updates the items that have changed versus what is currently in the database for the attribute
         ReturnValues="UPDATED_NEW"
     )
+
+    return {
+        'statusCode': 200,
+        'body': "Record has been updated"
+    }
