@@ -5,6 +5,7 @@ import boto3
 import botocore.exceptions
 # import library to get current date
 from datetime import date
+from datetime import datetime
 from time import gmtime, strftime
 
 # create a DynamoDB object using the AWS SDK
@@ -12,7 +13,7 @@ dynamodb = boto3.resource('dynamodb')
 # use the DynamoDB object to select our table
 table = dynamodb.Table('JAMDB')
 today = date.today()
-datetime = strftime("%Y-%m-%d %H:%M:%S", gmtime())
+systemdate = datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]
 
 
 def returnResponse(code, message, data=None):
@@ -31,6 +32,7 @@ def lambda_handler(event, context):
     user = event['email']
     company = event['company']
     title = event['position']
+    salary = event['salary']
     progress = event['progress']
     location = event['location']
     weblink = event['weblink']
@@ -40,20 +42,21 @@ def lambda_handler(event, context):
     notes = event['notes']
 
     date = today.strftime("%m/%d/%y")  # requirement 3.2.1.1.4.1
-    appID = datetime
+    appId = systemdate
 
     # write to the DynamoDB table
     response = table.put_item(
         Item={
             'User_Id': user,
-            'App_Id': appID,
+            'App_Id': appId,
             'Company': company,
             'Title': title,
+            'Salary': salary,
             'Progress': progress,
             'Date': date,
             'JobLocation': location,
-            'Web Link': weblink,
-            'JobDescriptions': description,
+            'WebLink': weblink,
+            'JobDescription': description,
             'JobRequirements': requirement,
             'PersonalReferences': references,
             'Notes': notes
@@ -62,3 +65,4 @@ def lambda_handler(event, context):
     print(response)
 
     return returnResponse(200, 'Creation was successful.', response)
+
