@@ -13,7 +13,6 @@ dynamodb = boto3.resource('dynamodb')
 # use the DynamoDB object to select our table
 table = dynamodb.Table('JAMDB')
 today = date.today()
-systemdate = datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]
 
 
 def returnResponse(code, message, data=None):
@@ -30,6 +29,7 @@ def returnResponse(code, message, data=None):
 def lambda_handler(event, context):
     # extract values from the event object we got from the Lambda service and store in a variable
     user = event['email']
+    appId = event['appId']
     company = event['company']
     title = event['position']
     salary = event['salary']
@@ -41,9 +41,7 @@ def lambda_handler(event, context):
     references = event['references']
     notes = event['notes']
 
-    date = today.strftime("%m/%d/%y")  # requirement 3.2.1.1.4.1
-    appId = systemdate
-
+    date = today.strftime("%m/%d/%y")  # requirement 3.2.1.1.4.1)
     # write to the DynamoDB table
     response = table.put_item(
         Item={
@@ -62,7 +60,9 @@ def lambda_handler(event, context):
             'Notes': notes
         })
 
+    print("this is the appID " + appId)
     print(response)
 
     return returnResponse(200, 'Creation was successful.', response)
+
 
