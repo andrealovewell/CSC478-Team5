@@ -1,3 +1,6 @@
+#Allows user to sign into the application
+#Backend requirement 4.2.13.6
+
 import json
 import boto3
 import botocore.exceptions
@@ -24,7 +27,7 @@ def returnResponse(code, message, data=None):
         }
     }
 
-
+#takes in parameters from the user and compares to what is currently in cognito
 def lambda_handler(event, context):
     client = boto3.client('cognito-idp')
 
