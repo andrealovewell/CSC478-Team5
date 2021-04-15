@@ -1,3 +1,6 @@
+#Return items from the database in a json object
+#Backend requirement 4.2.13.2
+
 import json
 # import the json utility package since we will be working with a JSON object
 import json
