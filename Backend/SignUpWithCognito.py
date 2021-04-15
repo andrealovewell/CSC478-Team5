@@ -1,3 +1,6 @@
+#Allows user to create an account to sign into the application
+#Backend requirement 4.2.13.5
+
 import json
 import boto3
 import botocore.exceptions
@@ -24,7 +27,7 @@ def returnResponse(code, message, data=None):
         }
     }
 
-
+#lambda handler that takes user values and adds it to the cognito user pool
 def lambda_handler(event, context):
     client = boto3.client('cognito-idp')
 
@@ -44,7 +47,7 @@ def lambda_handler(event, context):
                     'Value': event['email']
                 },
             ],
-
+            #validates the input supplied by the user to see if it already exists in the user pool
             ValidationData=[
                 {
                     'Name': 'name',
