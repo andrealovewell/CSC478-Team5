@@ -1,10 +1,7 @@
-#Allow user to upload document to S3 bucket
-#Backend requirement 4.2.13.8
-
 import json
 import boto3
+import base64
 
-# makes connection to DynamboDb
 dynamodb = boto3.resource('dynamodb')
 # use the DynamoDB object to select our table
 table = dynamodb.Table('JAMDB')
@@ -16,19 +13,18 @@ bucket = 'jamdocuments'
 
 def lambda_handler(event, context):
     user = event['email']
-    appID = event['appID']
+    appId = event['appID']
     filename = event['filename']
-    filecontents = event['body-json']
+    filecontents = base64.b64decode(event['content'])
 
     print("Starting to write file")
     write_file_to_s3(filename, filecontents)
     print("Finished writing file")
 
-    # sends download URL for S3 bucket to Dynamodb per the below keys
     response = table.update_item(
         Key={
             'User_Id': user,
-            'App_Id': appID,
+            'App_Id': appId,
         },
 
         UpdateExpression='SET S3_URL=:S3URL',
@@ -52,4 +48,5 @@ def write_file_to_s3(filename, filecontents):
 
     s3_client = boto3.client('s3')
     s3_client.put_object(Body=filecontents, Bucket=bucket, Key=filename_with_path)
+
 
