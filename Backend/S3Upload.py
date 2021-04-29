@@ -1,3 +1,6 @@
+#Allows user to upload a document to the S3 bucket
+#Backend requirement 4.2.13.8
+
 import json
 import boto3
 import base64
